@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [nombre, setNombre] = useState('');
+  const [semestre, setSemestre] = useState('');
+  const [deporteFavorito, setDeporteFavorito] = useState('');
+  
+
+  const deportes = [
+    'Fútbol',
+    'Baloncesto',
+    'Tenis',
+    'Voleibol',
+    'Natación'
+  ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // aquí se podría enviar la información a una API o hacer algo con ella
+  };
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="nombre" style={{margin:10}}>Nombre del estudiante</label>
+        <input name='nombre' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required/>
+
+        <label htmlFor="semestre" style={{margin:10}}>Semestre del estudiante</label>
+        <input name='semestre' type="text" value={semestre} onChange={(e) => setSemestre(e.target.value)} required/>
+
+        <label htmlFor="deporteFavorito" style={{margin:10}}>Deporte favorito</label>
+        <select name='deporteFavorito' value={deporteFavorito} onChange={(e) => setDeporteFavorito(e.target.value)} required>
+          <option value="">Seleccione un deporte</option>
+          {deportes.map((deporte, index) => (
+            <option key={index} value={deporte}>{deporte}</option>
+          ))}
+        </select>
+
+        
+      </form>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
