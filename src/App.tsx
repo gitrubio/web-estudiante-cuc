@@ -123,10 +123,10 @@ const App: React.FC = () => {
               <td>{estudiante.deporteFavorito}</td>
               <td>{estudiante.equipos.join(", ")}</td>
               <td>
-                <button onClick={() => handleEditar(estudiante, index)}>
+                <button className="editar"  onClick={() => handleEditar(estudiante, index)}>
                   Editar
                 </button>
-                <button onClick={() => handleEliminar(index)}>Eliminar</button>
+                <button  className="eliminar"  onClick={() => handleEliminar(index)}>Eliminar</button>
               </td>
             </tr>
           ))}
@@ -199,7 +199,7 @@ const App: React.FC = () => {
           </div>
           <div>
             <button onClick={handleGuardar}>Guardar</button>
-            <button onClick={handleCancelar}>Cancelar</button>
+            <button className="eliminar"  onClick={handleCancelar}>Cancelar</button>
           </div>
         </div>
       )}

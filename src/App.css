@@ -84,3 +84,13 @@ button {
 .form-container button:hover {
   opacity: 0.8;
 }
+
+button.eliminar {
+  background-color: red;
+  color: white;
+}
+
+button.editar {
+  background-color: yellow;
+  color: black;
+}
