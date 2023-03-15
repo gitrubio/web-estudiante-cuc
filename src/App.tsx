@@ -133,7 +133,7 @@ const App: React.FC = () => {
         </tbody>
       </table>
 
-      {estudianteEditado && (
+      {estudianteEditado ? (
         <div className="form-container">
           <h3>Editar Estudiante</h3>
           <div>
@@ -202,75 +202,73 @@ const App: React.FC = () => {
             <button className="eliminar"  onClick={handleCancelar}>Cancelar</button>
           </div>
         </div>
-      )}
-
-      <div className="form-container">
-        <h3>Agregar Estudiante</h3>
-        <div>
-          <label>Nombre:</label>
-          <input
-            type="text"
-            value={nuevoEstudiante.nombre}
-            onChange={(event) =>
-              setNuevoEstudiante({
-                ...nuevoEstudiante,
-                nombre: event.target.value,
-              })
-            }
-          />
-        </div>
-        <div>
-          <label>Semestre:</label>
-          <input
-            type="number"
-            value={nuevoEstudiante.semestre}
-            onChange={(event) =>
-              setNuevoEstudiante({
-                ...nuevoEstudiante,
-                semestre: Number(event.target.value),
-              })
-            }
-          />
-        </div>
-        <div>
-          <label>Deporte Favorito:</label>
-          <input
-            type="text"
-            value={nuevoEstudiante.deporteFavorito}
-            onChange={(event) =>
-              setNuevoEstudiante({
-                ...nuevoEstudiante,
-                deporteFavorito: event.target.value,
-              })
-            }
-          />
-        </div>
-        <div>
-          <label>Equipos:</label>
-          <select
-            multiple
-            value={nuevoEstudiante.equipos}
-            onChange={(event) =>
-              setNuevoEstudiante({
-                ...nuevoEstudiante,
-                equipos: Array.from(
-                  event.target.selectedOptions,
-                  (option) => option.value
-                ),
-              })
-            }
-          >
-            {equipos.map((equipo, index) => (
-              <option key={index} value={equipo.nombre}>
-                {equipo.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <button onClick={handleAgregar}>Agregar</button>
-        </div>
+      ) : <div className="form-container">
+      <h3>Agregar Estudiante</h3>
+      <div>
+        <label>Nombre:</label>
+        <input
+          type="text"
+          value={nuevoEstudiante.nombre}
+          onChange={(event) =>
+            setNuevoEstudiante({
+              ...nuevoEstudiante,
+              nombre: event.target.value,
+            })
+          }
+        />
       </div>
+      <div>
+        <label>Semestre:</label>
+        <input
+          type="number"
+          value={nuevoEstudiante.semestre}
+          onChange={(event) =>
+            setNuevoEstudiante({
+              ...nuevoEstudiante,
+              semestre: Number(event.target.value),
+            })
+          }
+        />
+      </div>
+      <div>
+        <label>Deporte Favorito:</label>
+        <input
+          type="text"
+          value={nuevoEstudiante.deporteFavorito}
+          onChange={(event) =>
+            setNuevoEstudiante({
+              ...nuevoEstudiante,
+              deporteFavorito: event.target.value,
+            })
+          }
+        />
+      </div>
+      <div>
+        <label>Equipos:</label>
+        <select
+          multiple
+          value={nuevoEstudiante.equipos}
+          onChange={(event) =>
+            setNuevoEstudiante({
+              ...nuevoEstudiante,
+              equipos: Array.from(
+                event.target.selectedOptions,
+                (option) => option.value
+              ),
+            })
+          }
+        >
+          {equipos.map((equipo, index) => (
+            <option key={index} value={equipo.nombre}>
+              {equipo.nombre}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <button onClick={handleAgregar}>Agregar</button>
+      </div>
+    </div>}
     </div>
   );
 };
